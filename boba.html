@@ -47,23 +47,22 @@ nav a {
   text-decoration:none;
 }
 
+/* POSTER */
+.poster {
+  width:100%;
+  height:90vh;
+  background:url('poster.png') center/cover no-repeat;
+}
+
 /* HERO */
 .hero {
-  background:url('hero.jpg') center/cover no-repeat;
-  height:90vh;
+  height:70vh;
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
   position:relative;
   padding:20px;
-}
-
-.hero::before {
-  content:"";
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,0.7);
 }
 
 .hero-content {
@@ -168,9 +167,13 @@ footer {
 <body>
 
 <header>
+<a href="index.html">
 <img src="logo.png" class="logo" alt="Logo">
+</a>
+<div>
 <h1>Bombay Boba & Co</h1>
 <p>Aamchi Mumbai’s Boba Spot</p>
+</div>
 </header>
 
 <nav>
@@ -179,6 +182,8 @@ footer {
 <a href="#gallery">Gallery</a>
 <a href="#contact">Contact</a>
 </nav>
+
+<div class="poster"></div>
 
 <section class="hero">
 <div class="hero-content">
