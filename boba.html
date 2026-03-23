@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bombay Boba Company - Kharghar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #FF6B6B;
+            --secondary: #4ECDC4;
+            --accent: #FFE66D;
+            --dark: #2C3E50;
+            --light: #F8F9FA;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23FF6B6B" width="1200" height="800"/><circle fill="%234ECDC4" opacity="0.6" cx="300" cy="200" r="200"/><circle fill="%23FFE66D" opacity="0.5" cx="900" cy="500" r="150"/><path fill="%232C3E50" opacity="0.3" d="M0 600Q300 400 600 600T1200 600V800H0Z"/></svg>');
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            margin-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--dark);
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(255,230,109,0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255,230,109,0.6);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Menu */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .menu-item {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .menu-item i {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .menu-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 1rem 0;
+        }
+
+        /* About */
+        .about {
+            background: var(--light);
+            text-align: center;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .about-text p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+
+        .about-image {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            height: 400px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 6rem;
+        }
+
+        /* Location */
+        .location {
+            text-align: center;
+        }
+
+        .location-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .location-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .location-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .location-card i {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            text-align: center;
+            padding: 3rem 2rem 1rem;
+        }
+
+        .social-links {
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: var(--secondary);
+            color: var(--white);
+            text-align: center;
+            line-height: 50px;
+            border-radius: 50%;
+            margin: 0 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: linear-gradient(135deg, var(--primary), var(--secondary));
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: left 0.3s;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero {
+                margin-top: 80px;
+                padding: 2rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .menu-item:nth-child(1) { animation: float 6s ease-in-out infinite; }
+        .menu-item:nth-child(2) { animation: float 6s ease-in-out infinite 1s; }
+        .menu-item:nth-child(3) { animation: float 6s ease-in-out infinite 2s; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#" class="logo">Bombay Boba Co.</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#location">Visit Us</a></li>
+            </ul>
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Bombay Boba Co.</h1>
+            <p>Handcrafted boba teas with authentic Indian flavors. Your bubble tea adventure starts here in Kharghar!</p>
+            <a href="#menu" class="cta-button">Explore Menu</a>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu-section">
+        <div class="container">
+            <h2>Our Signature Drinks</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <i class="fas fa-cocktail"></i>
+                    <h3>Masala Chai Boba</h3>
+                    <div class="price">₹120</div>
+                    <p>Classic Indian chai with chewy tapioca pearls and cream</p>
+                </div>
+                <div class="menu-item">
+                    <i class="fas fa-lemon"></i>
+                    <h3>Mango Lassi Boba</h3>
+                    <div class="price">₹140</div>
+                    <p>Creamy mango lassi with fresh mango chunks and boba</p>
+                </div>
+                <div class="menu-item">
+                    <i class="fas fa-strawberry"></i>
+                    <h3>Rose Falooda Boba</h3>
+                    <div class="price">₹150</div>
+                    <p>Fragrant rose milkshake with falooda and tapioca pearls</p>
+                </div>
+                <div class="menu-item">
+                    <i class="fas fa-coffee"></i>
+                    <h3>Masala Milk Tea</h3>
+                    <div class="price">₹110</div>
+                    <p>Spiced milk tea with aromatic Indian spices</p>
+                </div>
+                <div class="menu-item">
+                    <i class="fas fa-ice-cream"></i>
+                    <h3>Kulfi Boba Shake</h3>
+                    <div class="price">₹160</div>
+                    <p>Traditional kulfi ice cream blended with boba pearls</p>
+                </div>
+                <div class="menu-item">
+                    <i class="fas fa-candy-cane"></i>
+                    <h3>Gulab Jamun Boba</h3>
+                    <div class="price">₹130</div>
+                    <p>Sweet rose syrup with mini gulab jamun and boba</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2>Why Choose Us?</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Bringing the bold flavors of India to your favorite boba experience. Every drink is crafted with fresh ingredients and authentic spices.</p>
+                <p>Located in the heart of Kharghar, we're your go-to spot for innovative boba teas that blend Indian traditions with modern bubble tea culture.</p>
+                <a href="#location" class="cta-button">Find Us</a>
+            </div>
+            <div class="about-image">
+                <i class="fas fa-heart"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="location">
+        <h2>Visit Us in Kharghar</h2>
+        <div class="location-info">
+            <div class="location-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Address</h3>
+                <p>Shop No. X, Sector XX<br>Kharghar, Navi Mumbai<br>Maharashtra 410210</p>
+            </div>
+            <div class="location-card">
+                <i class="fas fa-clock"></i>
+                <h3>Hours</h3>
+                <p>Mon-Sun: 11AM - 11PM<br>Open 365 days!</p>
+            </div>
+            <div class="location-card">
+                <i class="fas fa-phone"></i>
+                <h3>Contact</h3>
+                <p>+91 98765 43210<br>bombayboba@gmail.com</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+            <a href="#"><i class="fab fa-google"></i></a>
+        </div>
+        <p>&copy; 2024 Bombay Boba Company. All rights reserved. | Made with <i class="fas fa-heart" style="color: var(--primary);"></i> in Kharghar</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
